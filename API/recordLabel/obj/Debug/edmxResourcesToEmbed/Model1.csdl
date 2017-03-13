@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artists" EntityType="Model1.Artist" />
+    <EntitySet Name="tourDates" EntityType="Model1.tourDates" />
+    <EntitySet Name="albums" EntityType="Model1.album" />
+    <EntitySet Name="products" EntityType="Model1.product" />
+    <EntitySet Name="songs" EntityType="Model1.song" />
+    <EntitySet Name="Members1" EntityType="Model1.Member" />
+    <AssociationSet Name="Artistmember" Association="Model1.Artistmember">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="member" EntitySet="Members1" />
+    </AssociationSet>
+    <AssociationSet Name="Artistalbum" Association="Model1.Artistalbum">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="album" EntitySet="albums" />
+    </AssociationSet>
+    <AssociationSet Name="albumsong" Association="Model1.albumsong">
+      <End Role="album" EntitySet="albums" />
+      <End Role="song" EntitySet="songs" />
+    </AssociationSet>
+    <AssociationSet Name="Artistproduct" Association="Model1.Artistproduct">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="ArtisttourDates" Association="Model1.ArtisttourDates">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="tourDates" EntitySet="tourDates" />
+    </AssociationSet>
+    <EntitySet Name="Carts" EntityType="Model1.Cart" />
+    <AssociationSet Name="Cartalbum" Association="Model1.Cartalbum">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="album" EntitySet="albums" />
+    </AssociationSet>
+    <AssociationSet Name="Cartproduct" Association="Model1.Cartproduct">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artist">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="numMembers" Type="Int32" Nullable="false" />
+    <Property Name="isTouring" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="members" Relationship="Model1.Artistmember" FromRole="Artist" ToRole="member" />
+    <NavigationProperty Name="albums" Relationship="Model1.Artistalbum" FromRole="Artist" ToRole="album" />
+    <NavigationProperty Name="products" Relationship="Model1.Artistproduct" FromRole="Artist" ToRole="product" />
+    <NavigationProperty Name="tourDates" Relationship="Model1.ArtisttourDates" FromRole="Artist" ToRole="tourDates" />
+    <Property Name="picUrl" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tourDates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="venue" Type="String" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Artist" Relationship="Model1.ArtisttourDates" FromRole="tourDates" ToRole="Artist" />
+    <Property Name="ArtistId" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="album">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="dateReleased" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Artist" Relationship="Model1.Artistalbum" FromRole="album" ToRole="Artist" />
+    <Property Name="ArtistId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="songs" Relationship="Model1.albumsong" FromRole="album" ToRole="song" />
+    <Property Name="price" Type="Decimal" Nullable="true" />
+    <Property Name="picUrl" Type="String" Nullable="true" />
+    <NavigationProperty Name="Cart" Relationship="Model1.Cartalbum" FromRole="album" ToRole="Cart" />
+    <Property Name="CartId" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="size" Type="String" Nullable="true" />
+    <NavigationProperty Name="Artist" Relationship="Model1.Artistproduct" FromRole="product" ToRole="Artist" />
+    <Property Name="ArtistId" Type="Int32" Nullable="false" />
+    <Property Name="picUrl" Type="String" Nullable="true" />
+    <Property Name="onSale" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cart" Relationship="Model1.Cartproduct" FromRole="product" ToRole="Cart" />
+    <Property Name="CartId" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="song">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="lyrics" Type="String" Nullable="false" />
+    <NavigationProperty Name="album" Relationship="Model1.albumsong" FromRole="song" ToRole="album" />
+    <Property Name="albumId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" />
+    <Property Name="instrument" Type="String" Nullable="false" />
+    <NavigationProperty Name="Artist" Relationship="Model1.Artistmember" FromRole="member" ToRole="Artist" />
+    <Property Name="ArtistId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="Artistmember">
+    <End Type="Model1.Artist" Role="Artist" Multiplicity="1" />
+    <End Type="Model1.Member" Role="member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Artistalbum">
+    <End Type="Model1.Artist" Role="Artist" Multiplicity="1" />
+    <End Type="Model1.album" Role="album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="album">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="albumsong">
+    <End Type="Model1.album" Role="album" Multiplicity="1" />
+    <End Type="Model1.song" Role="song" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="album">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="song">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Artistproduct">
+    <End Type="Model1.Artist" Role="Artist" Multiplicity="1" />
+    <End Type="Model1.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArtisttourDates">
+    <End Type="Model1.Artist" Role="Artist" Multiplicity="1" />
+    <End Type="Model1.tourDates" Role="tourDates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tourDates">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="albums" Relationship="Model1.Cartalbum" FromRole="Cart" ToRole="album" />
+    <NavigationProperty Name="products" Relationship="Model1.Cartproduct" FromRole="Cart" ToRole="product" />
+  </EntityType>
+  <Association Name="Cartalbum">
+    <End Type="Model1.Cart" Role="Cart" Multiplicity="0..1" />
+    <End Type="Model1.album" Role="album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="album">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cartproduct">
+    <End Type="Model1.Cart" Role="Cart" Multiplicity="0..1" />
+    <End Type="Model1.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

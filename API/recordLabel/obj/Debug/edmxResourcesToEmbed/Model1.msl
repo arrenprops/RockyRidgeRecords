@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Artists">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Artist)">
+        <MappingFragment StoreEntitySet="Artists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="numMembers" ColumnName="numMembers" />
+          <ScalarProperty Name="isTouring" ColumnName="isTouring" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tourDates">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.tourDates)">
+        <MappingFragment StoreEntitySet="tourDates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="venue" ColumnName="venue" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="albums">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.album)">
+        <MappingFragment StoreEntitySet="albums">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="dateReleased" ColumnName="dateReleased" />
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.product)">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="onSale" ColumnName="onSale" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="songs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.song)">
+        <MappingFragment StoreEntitySet="songs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lyrics" ColumnName="lyrics" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members1">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Member)">
+        <MappingFragment StoreEntitySet="Members1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="instrument" ColumnName="instrument" />
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Cart)">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

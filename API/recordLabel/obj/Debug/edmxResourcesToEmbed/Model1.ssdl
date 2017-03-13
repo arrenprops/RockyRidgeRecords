@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Artists" EntityType="Model1.Store.Artists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tourDates" EntityType="Model1.Store.tourDates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="albums" EntityType="Model1.Store.albums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="products" EntityType="Model1.Store.products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="songs" EntityType="Model1.Store.songs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Members1" EntityType="Model1.Store.Members1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carts" EntityType="Model1.Store.Carts" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Artistmember" Association="Model1.Store.Artistmember">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="member" EntitySet="Members1" />
+    </AssociationSet>
+    <AssociationSet Name="Artistalbum" Association="Model1.Store.Artistalbum">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="album" EntitySet="albums" />
+    </AssociationSet>
+    <AssociationSet Name="albumsong" Association="Model1.Store.albumsong">
+      <End Role="album" EntitySet="albums" />
+      <End Role="song" EntitySet="songs" />
+    </AssociationSet>
+    <AssociationSet Name="Artistproduct" Association="Model1.Store.Artistproduct">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="ArtisttourDates" Association="Model1.Store.ArtisttourDates">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="tourDates" EntitySet="tourDates" />
+    </AssociationSet>
+    <AssociationSet Name="Cartalbum" Association="Model1.Store.Cartalbum">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="album" EntitySet="albums" />
+    </AssociationSet>
+    <AssociationSet Name="Cartproduct" Association="Model1.Store.Cartproduct">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="numMembers" Type="int" Nullable="false" />
+    <Property Name="isTouring" Type="bit" Nullable="false" />
+    <Property Name="picUrl" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tourDates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="venue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="decimal" Nullable="false" />
+    <Property Name="ArtistId" Type="int" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="albums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dateReleased" Type="datetime" Nullable="false" />
+    <Property Name="ArtistId" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Nullable="true" />
+    <Property Name="picUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CartId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="decimal" Nullable="false" />
+    <Property Name="size" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ArtistId" Type="int" Nullable="false" />
+    <Property Name="picUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="onSale" Type="bit" Nullable="false" />
+    <Property Name="CartId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="songs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lyrics" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Members1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="instrument" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ArtistId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="Artistmember">
+    <End Role="Artist" Type="Model1.Store.Artists" Multiplicity="1" />
+    <End Role="member" Type="Model1.Store.Members1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Artistalbum">
+    <End Role="Artist" Type="Model1.Store.Artists" Multiplicity="1" />
+    <End Role="album" Type="Model1.Store.albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="album">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="albumsong">
+    <End Role="album" Type="Model1.Store.albums" Multiplicity="1" />
+    <End Role="song" Type="Model1.Store.songs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="album">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="song">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Artistproduct">
+    <End Role="Artist" Type="Model1.Store.Artists" Multiplicity="1" />
+    <End Role="product" Type="Model1.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArtisttourDates">
+    <End Role="Artist" Type="Model1.Store.Artists" Multiplicity="1" />
+    <End Role="tourDates" Type="Model1.Store.tourDates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tourDates">
+        <PropertyRef Name="ArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cartalbum">
+    <End Role="Cart" Type="Model1.Store.Carts" Multiplicity="0..1" />
+    <End Role="album" Type="Model1.Store.albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="album">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cartproduct">
+    <End Role="Cart" Type="Model1.Store.Carts" Multiplicity="0..1" />
+    <End Role="product" Type="Model1.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

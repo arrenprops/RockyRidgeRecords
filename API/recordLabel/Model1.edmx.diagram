@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2bacd15b11674267ab6e27262c323939" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Artist" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.tourDates" Width="1.5" PointX="8.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.album" Width="1.5" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.product" Width="1.5" PointX="0.5" PointY="2.875" />
+        <EntityTypeShape EntityType="Model1.song" Width="1.5" PointX="6.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Member" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="Model1.Artistmember" />
+        <AssociationConnector Association="Model1.Artistalbum" />
+        <AssociationConnector Association="Model1.albumsong" />
+        <AssociationConnector Association="Model1.Artistproduct" />
+        <AssociationConnector Association="Model1.ArtisttourDates" />
+        <EntityTypeShape EntityType="Model1.Cart" Width="1.5" PointX="5.625" PointY="3.5" />
+        <AssociationConnector Association="Model1.Cartalbum" />
+        <AssociationConnector Association="Model1.Cartproduct" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
