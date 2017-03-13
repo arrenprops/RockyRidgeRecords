@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="recordsApp">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- Angular 1.5.7 CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<!--Bootstrap CDN-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+	<!--UI Router-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+	<!--More Bootstrap-->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<!--stylesheet-->
+	<link rel="stylesheet" href="./styles.css">
+	<!--google font-->
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</head>
+
+<body>
+	<header ng-cloak ng-controller="homeController">
+		<div class="headerImg" style="height: 300px;">
+			<img id="logo" src="./images/rockyridge.png" alt="">
+		</div>
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<!--logo-->
+				<div class="navbar-header">
+					<a ui-sref="home" class="navbar-brand">Rocky Ridge Records</a>
+				</div>
+				<!--Menu Items-->
+				<div class="btn-group" role="group">
+					<ul class="nav navbar-nav">
+						<li>
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="true">
+                  Artists
+                  <span class="caret"></span>
+                  </button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><a ui-sref="The States">The States</a></li>
+									<li><a ui-sref="Buran Buran">Buran Buran</a></li>
+									<li><a ui-sref="The Districts">The Districts</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="true">
+                  Store
+                  <span class="caret"></span>
+                  </button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><a ui-sref="albumStore">Albums</a></li>
+									<li><a ui-sref="merchStore">Merch</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<button ui-sref="calendar" class="btn btn-default" type="button" aria-expanded="true">
+          Calendar
+          </button>
+						</li>
+						<li>
+							<button class="cartButt" ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+						</li>
+						<li>
+							<div id="cartNum">{{ thisCart.length }}</div>
+						</li>
+					</ul>
+				</div>
+		</nav>
+	</header>
+
+	<div ui-view></div>
+	<footer>
+		<nav class="navbar navbar-default navbar-static-bottom">
+			<span>Rocky Ridge Records | Copyright 2017</span>
+		</nav>
+	</footer>
+
+	<script src="./app.js"></script>
+	<script src="./jquery.js"></script>
+	<script src="./services/artistService.js"></script>
+	<script src="./services/albumService.js"></script>
+	<script src="./services/memberService.js"></script>
+	<script src="./services/productService.js"></script>
+	<script src="./services/songService.js"></script>
+	<script src="./services/cartService.js"></script>
+	<script src="./services/tourDatesService.js"></script>
+	<script src="./controllers/homeController.js"></script>
+	<script src="./controllers/artistsController.js"></script>
+	<script src="./controllers/merchController.js"></script>
+	<script src="./controllers/albumsController.js"></script>
+
+</body>
+
+</html>

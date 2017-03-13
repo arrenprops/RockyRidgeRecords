@@ -1,0 +1,16 @@
+<div class="uiStart"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 well store" ng-repeat="artist in artists">
+			<h3>{{artist.name}}</h3>
+			<div class="products" ng-repeat="product in artist.products">
+				<h4>{{product.name}}</h4>
+				<img src="{{product.picUrl}}" alt="#">
+				<p>Size: {{product.size}}</p>
+				<p>Price: {{product.price|currency}}</p>
+        <button ng-click="addToCart(product)">Add To Cart</button>
+			</div>
+      
+		</div>
+	</div>
+</div>

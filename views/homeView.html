@@ -1,0 +1,75 @@
+<div class="uiStart"></div>
+<div class="content container">
+	<div class="pic" style="height: 6000px">
+		<div class="row">
+			<div style="margin-left: 50px" class=" col-sm-8 well box">
+				<h1 class="jumbotron">News</h1>
+				<ul class="homeBox news">
+					<li>
+						<h2>The States West State Tour</h2>
+						<img src="./images/states.jpg" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>The Districts Record New Album</h2>
+						<img src="./images/album-art17.png" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>Buran Buran Sweeps At Grammy Awards</h2>
+						<img src="./images/buran.jpg" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>The States New Single</h2>
+						<img src="./images/album-art12.jpg" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>The States To Announce New Tour</h2>
+						<img src="./images/album-art15.jpg" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>Buran Buran Signs To RRR</h2>
+						<img src="./images/album-art17.png" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+					<li>
+						<h2>The Districts To Announce New Tour</h2>
+						<img src="./images/album-art19.jpg" alt="#">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis asperiores debitis, nostrum maxime accusamus quod adipisci
+							non odit! Perferendis, quaerat provident facere dicta quod nihil enim vel quam hic voluptatibus.</p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-3 well box">
+				<h1 class="jumbotron">On Tour</h1>
+				<ul>
+					<li class="homeBox" ng-repeat="band in artists">
+						<p ng-if="band.isTouring"><a ui-sref="{{band.name}}">{{band.name}}</a></p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-3 well box">
+				<h1 class="jumbotron">On Sale</h1>
+				<ul>
+					<li>
+						<div class="homeBox" ng-repeat="product in products" ng-if="product.onSale">
+							<h3> {{product.name}}</h3>
+							<a ui-sref="merchStore"><img src="{{product.picUrl}}"></a>
+							<p>Price: {{product.price|currency}}</p>
+              <button ng-click="addToCart(product)">Add To Cart</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

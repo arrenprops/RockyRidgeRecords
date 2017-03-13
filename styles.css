@@ -1,0 +1,120 @@
+body{
+  font-family: 'Lobster', cursive;
+}
+.headerImg{
+  background-image: url("./images/marco-bonomo-189647.jpg");
+  background-size: 100%;
+}
+#logo{
+  height: 600px;
+  width: 100%;
+  margin-top: -90px;
+}
+.pic{
+  background-image: url("./images/kimon-maritz-181128.jpg");
+  background-size: 100% 100%;
+}
+img{
+  height: 200px;
+  width: 200px;
+}
+.navbar{
+  min-height: 34px;
+  margin-bottom:0px;
+}
+.membersDates{
+  border-bottom: 2px solid black;
+}
+.store{
+  margin: 40px;
+  width: 250px;
+}
+.bandStore{
+  width: 230px;
+}
+ul{
+  list-style: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#venue{
+  border: 2px dashed black;
+  padding: 8px;
+  margin: 15px;
+}
+.box{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+footer{
+  background-color: white;
+  text-align: center;
+}
+.btn-default{
+  height:50px;
+  width:120px;
+}
+.nav li{
+  display: inline;
+}
+h3, h1, h4{
+  text-align: center;
+  font-weight: bold;
+}
+.box li{
+  text-align: center;
+}
+#bandImg{
+  height: 400px;
+  width: 400px;
+  margin-left: 0px;
+}
+#tracklist{
+  text-align: left;
+}
+.album{
+  margin-top: 60px;
+}
+.news img{
+  width: 90%;
+  height: auto;
+}
+.news li{
+  border-bottom: 2px solid black;
+}
+.goRight{
+  right: -210%;
+}
+.homeBox{
+  margin-left:-44px;
+}
+.lyrics{
+  width: 25%;
+  margin-top: 50px;
+}
+p{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.glyphicon{
+  font-size:50px;
+  color: white;
+}
+.cartButt{
+  background-color: transparent;
+  border: 0px;
+  right: 0;
+}
+#cartNum{
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+.cartTable{
+  display: table;
+  border-collapse: separate;
+  border-spacing: 20px;
+  border-color: black;
+  border-style: solid;
+  table-layout: auto;
+  margin: 50px;
+}

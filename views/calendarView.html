@@ -1,0 +1,13 @@
+<div class="uiStart"></div>
+<div class="container">
+	<h2>Upcoming Shows</h2>
+	<div class="col-sm-3 well box" ng-repeat="artist in artists" ng-if="artist.isTouring">
+		<h1>{{artist.name}}</h1>
+		<div id="venue" ng-repeat="date in artist.tourDates">
+			<p>Date: {{date.date|date:'MM/dd/yyyy'}}</p>
+			<p>Venue: {{date.venue}}</p>
+			<p>Location: {{date.location}}</p>
+			<p>Price: {{date.price|currency}}</p>
+		</div>
+	</div>
+</div>

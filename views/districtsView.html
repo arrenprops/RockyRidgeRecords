@@ -1,0 +1,45 @@
+<div class="uiStart"></div>
+<div class="container">
+	<div class="row">
+		<div class="band col-sm-5 box">
+			<h1>{{artists[1].name}}</h1>
+			<img id="bandImg" src="{{artists[1].picUrl}}" alt="#">
+			<p class="bandDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quidem fugiat modi omnis, alias labore nesciunt aliquam
+				quibusdam ipsam eaque provident quisquam debitis quod, qui expedita accusantium animi magni nostrum.</p>
+		</div>
+		<div class="col-sm-5 album box">
+			<!--<h3>Albums</h3>-->
+			<ul>
+				<li ng-repeat="album in artists[1].albums">
+					<h4>{{album.name}}</h4>
+					<img src="{{album.picUrl}}" ng-click="showSongs()">
+					<ol ng-if="show">
+						<li id="tracklist" ng-repeat="song in album.songs">{{song.name}} <a ui-sref="lyrics" ng-click="showThisSong(song)">Lyrics</a> </li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="membersDates row">
+		<div class="col-sm-5 box">
+			<h3>Members</h3>
+			<ul>
+				<li id="tracklist" ng-repeat="member in artists[1].members"><span>{{member.name}}</span><span> {{member.instrument}}</span></li>
+			</ul>
+		</div>
+		<div class="col-sm-5 box" ng-if="artists[1].isTouring">
+			<h3>Tour Dates</h3>
+			<ul>
+				<li id="tracklist" ng-repeat="tourDate in artists[1].tourDates">{{tourDate.venue}} {{tourDate.date|date:'MM/dd/yyyy'}} {{tourDate.location}}</li>
+			</ul>
+		</div>
+	</div>
+	<div class=" row">
+		<div class="col-sm-4 bandStore" ng-repeat="product in artists[1].products">
+			<h4>{{product.name}}</h4>
+			<img src="{{product.picUrl}}" alt="#">
+			<p>Size: {{product.size}}</p><span>Price: {{product.price|currency}}</span>
+      <button ng-click="addToCart(product)">Add To Cart</button>
+		</div>
+	</div>
+</div>
