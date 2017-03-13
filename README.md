@@ -15,3 +15,13 @@ Rocky Ridge Records is a demo website for a fictional record company. The websit
 - SQL
 
 ## Data Models
+
+| Artist     | Members   | Album  | Product  | Song  | TourDates |
+|------------|---|---|---|---|---|
+| Name       | Name   | Name  | Name  | Name  | Date |
+| NumMembers | Instrument   | DateReleased  | Price  | Lyrics  | Venue |
+| IsTouring  | ArtistId  | Price  | Size  | AlbumId  | Price |
+| PicUrl  |   | picUrl  | ArtistId  |   | Location |
+|  |   | ArtistId  |  picUrl |   | ArtistId |
+|  |   |   |  OnSale |   |
+
